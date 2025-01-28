@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hemang Yoka Executive Login</title>
+  <style>
+    /* General Reset */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(135deg, rgb(253, 249, 10), yellow, red, white, blue, blue);
+        color: #f5f5f5;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        padding: 20px;
+    }
+
+    .login-container {
+        background: linear-gradient(#18181809);
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 8px 20px rgba(57, 5, 247, 0.986);
+        width: 100%;
+        max-width: 500px;
+        text-align: center;
+    }
+
+    h2 {
+        margin-bottom: 20px;
+        font-size: 28px;
+        font-weight: 700;
+        color: blue;
+    }
+
+    input {
+        width: 100%;
+        padding: 15px;
+        margin-bottom: 20px;
+        border: none;
+        border-radius: 10px;
+        background: rgb(10, 10, 10);
+        color: #f7f1f1;
+        font-size: 15px;
+        box-shadow: inset 0 2px 5px rgb(62, 10, 252);
+        transition: all 0.3s ease;
+    }
+
+    input:focus {
+        outline: none;
+        background: #3e3e50;
+        box-shadow: 0 0 10px #ffd700;
+    }
+
+    button {
+        width: 100%;
+        padding: 15px;
+        border: none;
+        border-radius: 10px;
+        background: linear-gradient(90deg, blue, rgb(12, 12, 12));
+        color: #fad504;
+        font-size: 18px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background 0.3s;
+        box-shadow: 0 4px 10px rgb(0, 0, 0);
+    }
+
+    button:hover {
+        background: linear-gradient(90deg, rgb(7, 7, 7), rgb(3, 7, 245));
+    }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+  <div class="login-container">
+    <h2>Login to Hemang Yoka Executive</h2>
+    <input type="text" id="uniqueNumber" placeholder="Enter your unique number" />
+    <button onclick="login()">Login</button>
+  </div>
+
+  <script>
+    // Predefined list of unique numbers and usernames
+    const users = {
+      "C202426": "Nana Kwasi Asamoah",
+      "S202426": "Kwasi Boadu",
+      "F202426": "Oppong Safo"
+    };
+
+    // Login function
+    function login() {
+      const uniqueNumber = document.getElementById("uniqueNumber").value;
+
+      if (users[uniqueNumber]) {
+        // Successful login with SweetAlert
+        const username = users[uniqueNumber];
+        Swal.fire({
+          icon: 'success',
+          title: `Welcome, ${username}!`,
+          text: 'Redirecting to Hemang Yoka SMS page...',
+          showConfirmButton: false,
+          timer: 2000
+        }).then(() => {
+          window.location.href = "home.html";
+        });
+      } else {
+        // Invalid unique number with SweetAlert
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops!',
+          text: 'Invalid unique number. Please try again.',
+          confirmButtonText: 'Try Again'
+        });
+      }
+    }
+  </script>
+</body>
+</html>
